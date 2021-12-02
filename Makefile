@@ -1,2 +1,2 @@
 main:
-	g++ test.cpp -o test -I/usr/include/hashlib++/ -lhl++ -lcrypto -pthread
+	g++ lettuce.cpp -o lettuce -I/usr/include/hashlib++/ -lhl++ -lcrypto -pthread
