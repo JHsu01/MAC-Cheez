@@ -8,3 +8,7 @@ Test.cpp has multiple functions critical to Alice and Bob's goals. It allows the
 
 In theory, bob and alice will both take their file, hash it, and encrypt the hash. They will then send the encrypted ciphertext it to each other's IP adress. The other party will then decrypt the ciphertext with their private key, then compare the hash generated. 
 
+# Sample commands
+To encrypt 
+  jejbviuebe
+
