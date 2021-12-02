@@ -194,7 +194,7 @@ int main(int argc, char** argv) {
 	//	./test name hash_enc file pub
 	//		hashes file and encrypts with pub
 	//		saves output to ciphertext
-	//	./test name dec_verf mac ciphertext priv_DO_NOT_SEND
+	//	./test name dec_verf mac ciphertext
 	//		outputs to screen whether or not shit was good
 
 	char* my_name = argv[1]; //for the purposes of differentiation
@@ -226,7 +226,7 @@ int main(int argc, char** argv) {
 	} else if (strcmp(func, "dec_verf") == 0) {
 		char* mac_file = argv[3];
 		char* ciphertext_file = argv[4];
-		char* priv_file = argv[5];
+		char* priv_file = priv_name;
 		dec_verf(mac_file, ciphertext_file, priv_file);
 	} else {
 		printf("invalid args lmao\n");
