@@ -38,8 +38,8 @@ char* malloc_and_encrypt(char* p, RSA* pub) {
 		pub, RSA_PKCS1_OAEP_PADDING);
 		//"highly recommended to use RSA_PKCS1_OAEP_PADDING
 	if (enc_ret == -1) {
-		printf("encrypt failed lmao\n");
-		strcpy(c, "encryption failed lmao");
+		printf("encrypt failed\n");
+		strcpy(c, "encryption failed");
 	}
 	//printf("enc_ret: %d\n", enc_ret);
 	return c;
@@ -52,8 +52,8 @@ char* malloc_and_decrypt(char* c, RSA* priv) {
 		priv, RSA_PKCS1_OAEP_PADDING);
 		//because of padding, decryption size is key size
 	if (dec_ret == -1) {
-		printf("decryption failed lmao\n");
-		//strcpy(p, "decryption failed lmao");
+		printf("decryption failed\n");
+		//strcpy(p, "decryption failed");
 
 		ERR_load_crypto_strings();
 		ERR_error_string(ERR_get_error(), error);
@@ -202,7 +202,7 @@ void server() {
 		process_and_close_request(client_socket);
 		//TODO: add pthread create resume above
 		//so you can process multiple requests at a time
-		//just in case the adv tries to ddos this shit
+		//just in case the adv tries to ddos
 	//}
 		printf("server end\n");
 }
@@ -252,7 +252,7 @@ int main(int argc, char** argv) {
 //	std::string hash = my_wrapper->getHashFromFile("bug.png");
 //	//printf("hash: %s\n", hash.c_str());
 //
-//	//char* plain_text = "suck a cock lmao";
+//	//char* plain_text = "test plaintext message";
 //	char* plain_text = (char*) hash.c_str();
 //	//technically i could make the hash into a really large integer
 //	//but then i would have to also make slight mods to enc/dec
@@ -263,7 +263,6 @@ int main(int argc, char** argv) {
 //
 //	//key generation
 //	RSA* key_pair = RSA_generate_key(2048, 65537, NULL, NULL);
-//		//stack overflow says its the most popular exp lmao
 //	int key_size = RSA_size(key_pair);
 //	printf("max msg length: %d\n", key_size);
 //
@@ -340,7 +339,7 @@ int main(int argc, char** argv) {
 
 	printf("main here\n");
 
-	//freeing shit
+	//freeing stuff
 	free(pub_key);
 	free(priv_key);
 	free(their_pub_key);
