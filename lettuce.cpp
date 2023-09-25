@@ -22,8 +22,8 @@ char* malloc_and_encrypt(char* p, RSA* pub) {
 		pub, RSA_PKCS1_OAEP_PADDING);
 		//"highly recommended to use RSA_PKCS1_OAEP_PADDING
 	if (enc_ret == -1) {
-		printf("encrypt failed lmao\n");
-		strcpy(c, "encryption failed lmao");
+		printf("encrypt failed\n");
+		strcpy(c, "encryption failed");
 	}
 	//printf("enc_ret: %d\n", enc_ret);
 	return c;
@@ -36,8 +36,8 @@ char* malloc_and_decrypt(char* c, RSA* priv) {
 		priv, RSA_PKCS1_OAEP_PADDING);
 		//because of padding, decryption size is key size
 	if (dec_ret == -1) {
-		printf("decryption failed lmao\n");
-		//strcpy(p, "decryption failed lmao");
+		printf("decryption failed\n");
+		//strcpy(p, "decryption failed");
 
 		ERR_load_crypto_strings();
 		ERR_error_string(ERR_get_error(), error);
@@ -133,7 +133,6 @@ char* cipher_name;
 
 void generate_keys() {
 	RSA* key_pair = RSA_generate_key(2048, 65537, NULL, NULL);
-		//stack overflow says its the most popular exp lmao
 	int key_size = RSA_size(key_pair);
 
 	char* pub = malloc_and_extract_pub(key_pair);
@@ -195,7 +194,7 @@ int main(int argc, char** argv) {
 	//		hashes file and encrypts with pub
 	//		saves output to ciphertext
 	//	./test name dec_verf mac ciphertext
-	//		outputs to screen whether or not shit was good
+	//		outputs to screen whether or not MAC was valid
 
 	char* my_name = argv[1]; //for the purposes of differentiation
 	char* func = argv[2];
@@ -229,7 +228,7 @@ int main(int argc, char** argv) {
 		char* priv_file = priv_name;
 		dec_verf(mac_file, ciphertext_file, priv_file);
 	} else {
-		printf("invalid args lmao\n");
+		printf("invalid args\n");
 	}
 
 }
